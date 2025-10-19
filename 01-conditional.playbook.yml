@@ -14,3 +14,8 @@
      ansible.builtin.debug:
        msg: "The value is less than 35"
      when: my_value < 35
+
+   - name: Task - 03
+     ansible.builtin.debug:
+       msg: "The value is equal to 79"
+     when: my_value == 79
