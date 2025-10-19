@@ -1,0 +1,21 @@
+---
+- name: check value and print message
+  hosts: localhost
+  connection: local
+  vars:
+   my_value: 79
+  tasks:
+   - name: Task - 01
+     ansible.builtin.debug:
+       msg: "The value is greater than 50"
+     when: my_value > 50
+
+   - name: Task - 02
+     ansible.builtin.debug:
+       msg: "The value is less than 35"
+     when: my_value < 35
+
+   - name: Task - 03
+     ansible.builtin.debug:
+       msg: "The value is equal to 79"
+     when: my_value == 79
