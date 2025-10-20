@@ -2,28 +2,26 @@
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "rds-mysql-subnet-group"
   subnet_ids = var.subnet_ids
-
-  tags = {
-    Name = "rds-mysql-subnet-group"
-  }
 }
+# Security Group for RDS
+resource "aws_security_group" "rds_sg" {
+  name        = "rds-mysql-sg"
+  description = "Security group for RDS MySQL instance"
+  vpc_id      = var.vpc_id
 
-# DB Parameter Group
-resource "aws_db_parameter_group" "rds_params" {
-  name   = "rds-mysql-params"
-  family = "mysql8.0"
-
-  parameter {
-    name  = "character_set_server"
-    value = "utf8mb4"
+  ingress {
+    description = "MySQL access"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_cidr_blocks
   }
 
-  parameter {
-    name  = "collation_server"
-    value = "utf8mb4_unicode_ci"
-  }
-
-  tags = {
-    Name = "rds-mysql-params"
+  egress {
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
