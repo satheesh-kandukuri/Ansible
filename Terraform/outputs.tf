@@ -1,19 +1,15 @@
-output "db_instance_endpoint" {
-    description = "The endpoint of the RDS database instance"
-    value       = aws_db_instance.test_db.endpoint
+# Outputs
+output "rds_endpoint" {
+  description = "RDS instance endpoint"
+  value       = aws_db_instance.mysql.endpoint
 }
 
-output "db_instance_id" {
-    description = "The ID of the RDS database instance"
-    value       = aws_db_instance.test_db.id
+output "rds_arn" {
+  description = "RDS instance ARN"
+  value       = aws_db_instance.mysql.arn
 }
 
-output "db_instance_address" {
-    description = "The address of the RDS database instance"
-    value       = aws_db_instance.test_db.address
+output "rds_db_name" {
+  description = "Database name"
+  value       = aws_db_instance.mysql.db_name
 }
-output "db_instance_port" {
-    description = "The port of the RDS database instance"
-    value       = aws_db_instance.test_db.port
-}
-
