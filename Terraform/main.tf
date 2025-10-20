@@ -9,7 +9,7 @@ resource "random_password" "master_password" {
 
 # Secrets Manager Secret for RDS Master Credentials
 resource "aws_secretsmanager_secret" "rds_master_credentials" {
-  name                    = "rds-mysql-master-credentials"
+  name                    = "rds-mysql-master-01-credentials"
   description             = "Master credentials for RDS MySQL instance"
   recovery_window_in_days = 7
 }
@@ -35,7 +35,7 @@ resource "random_password" "app_user_password" {
 
 # Secrets Manager Secret for Application User Credentials
 resource "aws_secretsmanager_secret" "rds_app_user_credentials" {
-  name                    = "rds-mysql-app-user-credentials"
+  name                    = "rds-mysql-app-01-user-credentials"
   description             = "Application user credentials for RDS MySQL"
   recovery_window_in_days = 7
 }
