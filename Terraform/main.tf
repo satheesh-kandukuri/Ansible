@@ -35,7 +35,7 @@ resource "random_password" "app_user_password" {
 
 # Secrets Manager Secret for Application User Credentials
 resource "aws_secretsmanager_secret" "rds_app_user_credentials" {
-  name                    = "rds-mysql-app-04-user-credentials"
+  name_prefix             = "rds-mysql-appuser-"
   description             = "Application user credentials for RDS MySQL"
   recovery_window_in_days = 7
 }
