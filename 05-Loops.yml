@@ -1,9 +1,10 @@
-name: Practicing Loops in Ansible
-hosts: localhost
-connection: local
-gather_facts: no
+---
+- name: Practicing Loops in Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
 
-tasks:
+  tasks:
   - name: print names in Loops
     ansible.builtin.debug:
       msg: "Hello, {{ item }}!"
